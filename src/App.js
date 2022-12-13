@@ -21,7 +21,6 @@ function App() {
               <figure className="cardImage">
                 <img src={item.image} className="cardImageChar" />
               </figure>
-
               <article className="cardText">
                 <h1 className="cardImageName">{item.name}</h1>
                 <p className="cardTextLastLocation">Last location:</p>
