@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# Make It Real - Profile Card Component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the first React project of the Make It Real course.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Solution Screenshot](#solution-screenshot)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### The challenge
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+- Design a layout as close as the screenshot picture of the project.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Solution Screenshot
 
-### `npm run build`
+![Fullsize screen](./src/desktop-ss.png)
+![Mobile screen size](./src/mobile-ss.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## My process
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Built with
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- Flexbox
+- Semantic HTML5
+- Axios (http petitions)
 
-### `npm run eject`
+### What I learned
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+We learned how to bluid a React app using <useState()> and <useEffect()> hooks.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```js
+const [character, setCharacter] = useState([]);
+useEffect(() => {
+  axios.get("https://rickandmortyapi.com/api/character").then((response) => {
+    setCharacter(response.data.results);
+  });
+}, []);
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+We learned how to wrap flex components for giving the layout responsive features
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```css
+.cardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+```
 
-## Learn More
+We learned how to use http petitions for getting information from API's
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```js
+const [character, setCharacter] = useState([]);
+useEffect(() => {
+  axios.get("https://rickandmortyapi.com/api/character").then((response) => {
+    setCharacter(response.data.results);
+  });
+}, []);
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```js
+{
+  character.map((item) => {
+    return (
+      <section className="card">
+        <figure className="cardImage">
+          <img src={item.image} className="cardImageChar" />
+        </figure>
+        <article className="cardText">
+          <h1 className="cardImageName">{item.name}</h1>
+          <p className="cardTextLastLocation">Last location:</p>
+          <p className="cardTextLocation">{item.location.name}</p>
+        </article>
+      </section>
+    );
+  });
+}
+```
 
-### Code Splitting
+### Continued development
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+It will be nice to continue developing the layout in order to show more information about the Rick & Mortie's characters in the front-end.
 
-### Analyzing the Bundle Size
+### Useful resources
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- [useState resourse](https://reactjs.org/docs/hooks-state.html) - This helped me figuring out how to use this property.
+- [useEffect resourse](https://reactjs.org/docs/hooks-effect.html) - This helped me figuring out how to use this property.
+- [Axios resourse](https://guias.makeitreal.camp/javascript-browser/peticiones-http) - This helped me figuring out how to use this property.
 
-### Making a Progressive Web App
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Github - [Juan Velasco](https://github.com/juandiegovelsol)
+- Github - [Jailer Fonseca]()
 
-### Advanced Configuration
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Kudos to our friends and mentors: Sergio Jaramilo and Daniel Espitia.
